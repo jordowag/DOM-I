@@ -2,13 +2,39 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap:wrap;
 }
 
 .digit {
   display: inline-block;
   font-size: 80px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .redDigit {
   color: red;
+}
+.digits {
+  width:100%;
+  text-align:center;
+}
+
+button {
+  font-size: 2rem;
+  padding: 20px;
+  border-radius:10px;
+  margin: 10px;
+}
+
+#start {
+  background-color:green;
+}
+#start:disabled {
+  background-color:gray;
+}
+#reset {
+  background-color:red;
+}
+#reset:disabled {
+  background-color:gray;
 }
