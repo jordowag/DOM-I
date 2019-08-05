@@ -108,9 +108,7 @@ let footer = document.getElementsByTagName("footer")[0].children;
 footer[0].textContent = siteContent["footer"]["copyright"];
 
 // Task 3
-for (let i = 0; i < links.length; i++) {
-  links[i].style.color = "green";
-}
+// Add Elements to Navbar
 let nav = document.getElementsByTagName("nav")[0];
 let newLink = document.createElement("a");
 newLink.href = "http://facebook.com";
@@ -122,3 +120,27 @@ let newLink2 = document.createElement("a");
 newLink2.href = "http://twitter.com";
 newLink2.appendChild(text);
 nav.prepend(newLink2);
+ 
+// Change Colors of Links
+for (let i = 0; i < links.length; i++) {
+  links[i].style.color = "green";
+}
+
+// Change text color of section tags
+let sections = document.getElementsByTagName("section");
+for (let i = 0; i < sections.length; i++) {
+  sections[i].style.color = "blue";
+}
+
+// Adding Event Handlers
+let button = document.getElementsByTagName("button")[0];
+button.addEventListener("click", clickFunction);
+
+function clickFunction(){
+  let el = document.createElement("p");
+  let textNode = document.createTextNode("You have clicked the button!");
+  el.append(textNode);
+  console.log(el);
+  let mainContent = document.getElementsByClassName("main-content")[0];
+  mainContent.prepend(el);
+}
