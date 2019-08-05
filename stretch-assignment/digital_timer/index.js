@@ -2,15 +2,15 @@ let secondTens = document.getElementById("secondTens");
 let secondOnes = document.getElementById("secondOnes");
 let msHundreds = document.getElementById("msHundreds");
 let msTens = document.getElementById("msTens");
-let times = [secondTens,secondOnes,msHundreds,msTens];
-let digits = document.getElementsByClassName("digit");
-let timerID;
-resetText();
-
-
 let startBtn = document.getElementById("start");
 let resetBtn = document.getElementById("reset");
 
+let times = [secondTens,secondOnes,msHundreds,msTens]; // To set timer to 0 
+let digits = document.getElementsByClassName("digit"); // Each character in the Timer
+let timerID; // TimerID for setInterval later. Will need global scope for later use
+resetText();
+
+// click on startbutton activates timer
 startBtn.addEventListener("click", function(){
     resetText();
     timerID = setInterval(changeTime,10);
@@ -18,6 +18,7 @@ startBtn.addEventListener("click", function(){
     resetBtn.disabled = false;
 });
 
+// sets timer to 0
 resetBtn.addEventListener("click", function(){
     clearInterval(timerID)
     resetText();
@@ -25,7 +26,9 @@ resetBtn.addEventListener("click", function(){
     startBtn.disabled = false;
 });
 
-
+// The method that changes the timer. It is called every 10 ms, and adds 1 to the last digit (hundredths of ms)
+// When it reaches 10, it will carry the 1 over to the next digit
+// Once it reaches 10 seconds, the timer will stop and the text will go red.
 function changeTime() {
     msTens.innerText = Number(msTens.innerText) + 1;
     checkCarry(msTens,msHundreds);
@@ -40,6 +43,7 @@ function changeTime() {
     }
 }
 
+// Checks the INIT character to see if it 10. if it is, then it will carry the one into the next digit, the CARRY param.
 function checkCarry(init,carry) {
     if (init.innerText == 10) { 
         init.innerText = "0";
@@ -47,6 +51,7 @@ function checkCarry(init,carry) {
     }
 }
 
+// Resets text to 0's and black color.
 function resetText(){
     for (let i = 0; i < times.length; i++){
         times[i].innerText = "0";
