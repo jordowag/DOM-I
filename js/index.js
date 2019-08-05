@@ -62,9 +62,12 @@ for (property in siteContent.cta) {
     }
 }
 
+// Top half of content before the image 
 let topContent = document.getElementsByClassName("top-content")[0].children;
+// Put the text in one array
 let topText = [siteContent["main-content"]["features-h4"],siteContent["main-content"]["features-content"],siteContent["main-content"]["about-h4"],siteContent["main-content"]["about-content"]];
 let counter = 0;
+// Iterate through both sections and its text nodes, while grabbing the text from the array
 for (let i = 0; i < topContent.length; i++) {
   for (let j = 0; j < 2; j++) {
     topContent[i].children[j].textContent = topText[counter];
@@ -103,3 +106,19 @@ siteContent.contact.address = "123 Way 456 Street <br> Somewhere, USA";
 contact[1].innerHTML = siteContent.contact.address;
 let footer = document.getElementsByTagName("footer")[0].children;
 footer[0].textContent = siteContent["footer"]["copyright"];
+
+// Task 3
+for (let i = 0; i < links.length; i++) {
+  links[i].style.color = "green";
+}
+let nav = document.getElementsByTagName("nav")[0];
+let newLink = document.createElement("a");
+newLink.href = "http://facebook.com";
+let text = document.createTextNode("Facebook");
+newLink.appendChild(text);
+nav.appendChild(newLink);
+text = document.createTextNode("Twitter");
+let newLink2 = document.createElement("a");
+newLink2.href = "http://twitter.com";
+newLink2.appendChild(text);
+nav.prepend(newLink2);
